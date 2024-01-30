@@ -27,10 +27,11 @@ create table `reviews` (
 
 create table `orders` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `customer_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `customer_id` int UNSIGNED ,
     `articles_quantity` int(3) NOT NULL,
     `purchase_date` datetime NOT NULL DEFAULT current_timestamp(),
     `total_price` float(11) NOT NULL,
     `address` varchar(255) NOT NULL,
     PRIMARY KEY (id),
+    FOREIGN KEY (customer_id) REFERENCES users(id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;

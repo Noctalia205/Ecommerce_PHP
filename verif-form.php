@@ -20,7 +20,7 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
  if (isset($terme))
  {
   $terme = strtolower($terme);
-  $select_terme = $bdd->prepare("SELECT titre, contenu FROM articles WHERE titre LIKE ? OR contenu LIKE ?");
+  $select_terme = $bdd->prepare("SELECT title, description FROM articles WHERE title LIKE ? OR description LIKE ?");
   $select_terme->execute(array("%".$terme."%", "%".$terme."%"));
  }
  else
@@ -42,7 +42,7 @@ if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
   <?php
   while($terme_trouve = $select_terme->fetch())
   {
-   echo "<div><h2>".$terme_trouve['titre']."</h2><p> ".$terme_trouve['contenu']."</p>";
+   echo "<div><h2>".$terme_trouve['title']."</h2><p> ".$terme_trouve['description']."</p>";
   }
   $select_terme->closeCursor();
    ?>
